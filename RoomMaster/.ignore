@@ -1,0 +1,11 @@
+# Ignore Misc/dbconfig.json
+Misc/dbconfig.json
+
+# Other ignore rules
+bin/
+obj/
+*.user
+*.suo
+*.bak
+*.tmp
+*.swp

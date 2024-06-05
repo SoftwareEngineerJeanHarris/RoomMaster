@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RoomMaster.Login.CreateAccountUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RoomMaster.Login"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Username:"/>
+            <TextBox Name="NewUsernameTextBox" Width="200"/>
+            <TextBlock Text="Password:" Margin="0,10,0,0"/>
+            <PasswordBox Name="NewPasswordBox" Width="200"/>
+            <TextBlock Text="Confirm Password:" Margin="0,10,0,0"/>
+            <PasswordBox Name="ConfirmPasswordBox" Width="200"/>
+            <Button Content="Create Account" Width="200" Margin="0,10,0,0" Click="CreateAccountButton_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
