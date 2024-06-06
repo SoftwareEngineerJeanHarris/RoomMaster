@@ -14,5 +14,6 @@
             <PasswordBox Name="PasswordBox" Width="200"/>
             <Button Content="Login" Width="200" Margin="0,10,0,0" Click="LoginButton_Click"/>
         </StackPanel>
+        <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center" Visibility="Hidden"/>
     </Grid>
 </UserControl>

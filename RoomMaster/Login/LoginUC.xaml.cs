@@ -1,7 +1,10 @@
 ﻿using RoomMaster.Misc;
+using RoomMaster.Misc.Controls;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace RoomMaster.Login
 {
@@ -21,7 +24,7 @@ namespace RoomMaster.Login
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Username and password are required.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Username and password are required.", NotificationType.Error);
                 return;
             }
 
@@ -29,11 +32,10 @@ namespace RoomMaster.Login
             if (isValid)
             {
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show("Login successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Invalid username or password.", NotificationType.Error);
             }
         }
     }

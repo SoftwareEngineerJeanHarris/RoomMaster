@@ -11,13 +11,11 @@ namespace RoomMaster.Login
 
         private void LoginUC_LoginSuccessful(object sender, EventArgs e)
         {
-            MessageBox.Show("Login was successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             // Handle post-login actions here (e.g., navigating to the main application window)
         }
 
         private void CreateAccountUC_AccountCreated(object sender, EventArgs e)
         {
-            MessageBox.Show("Account created successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             SwitchToLoginView();
         }
 

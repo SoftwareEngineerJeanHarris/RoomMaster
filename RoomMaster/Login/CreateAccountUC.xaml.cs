@@ -1,8 +1,11 @@
 ﻿using RoomMaster.Misc;
+using RoomMaster.Misc.Controls;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace RoomMaster.Login
 {
@@ -27,43 +30,43 @@ namespace RoomMaster.Login
                 string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
                 string.IsNullOrWhiteSpace(confirmPassword))
             {
-                MessageBox.Show("All fields are required.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "All fields are required.", NotificationType.Error);
                 return;
             }
 
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Invalid email format.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Invalid email format.", NotificationType.Error);
                 return;
             }
 
             if (password != confirmPassword)
             {
-                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Passwords do not match.", NotificationType.Error);
                 return;
             }
 
             if (!IsStrongPassword(password))
             {
-                MessageBox.Show("Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters.", NotificationType.Error);
                 return;
             }
 
             if (DatabaseHelper.UserExists(username))
             {
-                MessageBox.Show("A user with this username already exists.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "A user with this username already exists.", NotificationType.Error);
                 return;
             }
 
             bool isCreated = DatabaseHelper.CreateUser(username, password, fullName, email, 1);
             if (isCreated)
             {
+                Helper.ShowBanner(banner, "Account created successfully.", NotificationType.Success);
                 AccountCreated?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show("Account created successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Error creating account. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Helper.ShowBanner(banner, "Error creating account. Please try again.", NotificationType.Notification);
             }
         }
 
