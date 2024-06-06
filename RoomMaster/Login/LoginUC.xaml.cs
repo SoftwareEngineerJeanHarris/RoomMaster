@@ -1,15 +1,13 @@
 ﻿using RoomMaster.Misc;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace RoomMaster.Login
 {
-    /// <summary>
-    /// Interaction logic for LoginUC.xaml
-    /// </summary>
     public partial class LoginUC : UserControl
     {
-        public event EventHandler<User> LoginSuccessful;
+        public event EventHandler LoginSuccessful;
 
         public LoginUC()
         {
@@ -21,14 +19,21 @@ namespace RoomMaster.Login
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
 
-            if (DatabaseHelper.ValidateUser(username, password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                User user = new User { Username = username, Password = password };
-                LoginSuccessful?.Invoke(this, user);
+                MessageBox.Show("Username and password are required.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            bool isValid = DatabaseHelper.ValidateUser(username, password);
+            if (isValid)
+            {
+                LoginSuccessful?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show("Login successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

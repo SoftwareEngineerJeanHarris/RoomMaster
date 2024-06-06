@@ -11,6 +11,7 @@
             <local:LoginUC x:Name="LoginUC" LoginSuccessful="LoginUC_LoginSuccessful"/>
             <local:CreateAccountUC x:Name="CreateAccountUC" Visibility="Collapsed" AccountCreated="CreateAccountUC_AccountCreated"/>
         </Grid>
-        <Button Content="Switch to Create Account" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="SwitchToCreateAccountButton_Click"/>
+        <Button Content="Switch to Create Account" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="SwitchToCreateAccountButton_Click" Margin="10" x:Name="SwitchToCreateAccountButton"/>
+        <Button Content="Switch to Login" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SwitchToLoginButton_Click" Margin="10" Visibility="Collapsed" x:Name="SwitchToLoginButton"/>
     </Grid>
 </Window>

@@ -8,7 +8,11 @@
              d:DesignHeight="400" d:DesignWidth="400">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Username:"/>
+            <TextBlock Text="Full Name:"/>
+            <TextBox Name="FullNameTextBox" Width="200"/>
+            <TextBlock Text="Email:" Margin="0,10,0,0"/>
+            <TextBox Name="EmailTextBox" Width="200"/>
+            <TextBlock Text="Username:" Margin="0,10,0,0"/>
             <TextBox Name="NewUsernameTextBox" Width="200"/>
             <TextBlock Text="Password:" Margin="0,10,0,0"/>
             <PasswordBox Name="NewPasswordBox" Width="200"/>

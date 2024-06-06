@@ -1,11 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace RoomMaster.Login
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()
@@ -13,34 +9,42 @@ namespace RoomMaster.Login
             InitializeComponent();
         }
 
-        private void LoginUC_LoginSuccessful(object sender, User user)
+        private void LoginUC_LoginSuccessful(object sender, EventArgs e)
         {
-            MainWindow mainWindow = new MainWindow(user);
-            mainWindow.Show();
-            this.Close();
+            MessageBox.Show("Login was successful.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Handle post-login actions here (e.g., navigating to the main application window)
         }
 
-        private void CreateAccountUC_AccountCreated(object sender, User user)
+        private void CreateAccountUC_AccountCreated(object sender, EventArgs e)
         {
-            MainWindow mainWindow = new MainWindow(user);
-            mainWindow.Show();
-            this.Close();
+            MessageBox.Show("Account created successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            SwitchToLoginView();
         }
 
         private void SwitchToCreateAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginUC.Visibility == Visibility.Visible)
-            {
-                LoginUC.Visibility = Visibility.Collapsed;
-                CreateAccountUC.Visibility = Visibility.Visible;
-                ((Button)sender).Content = "Switch to Login";
-            }
-            else
-            {
-                LoginUC.Visibility = Visibility.Visible;
-                CreateAccountUC.Visibility = Visibility.Collapsed;
-                ((Button)sender).Content = "Switch to Create Account";
-            }
+            SwitchToCreateAccountView();
+        }
+
+        private void SwitchToLoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            SwitchToLoginView();
+        }
+
+        private void SwitchToCreateAccountView()
+        {
+            LoginUC.Visibility = Visibility.Collapsed;
+            CreateAccountUC.Visibility = Visibility.Visible;
+            SwitchToCreateAccountButton.Visibility = Visibility.Collapsed;
+            SwitchToLoginButton.Visibility = Visibility.Visible;
+        }
+
+        private void SwitchToLoginView()
+        {
+            LoginUC.Visibility = Visibility.Visible;
+            CreateAccountUC.Visibility = Visibility.Collapsed;
+            SwitchToCreateAccountButton.Visibility = Visibility.Visible;
+            SwitchToLoginButton.Visibility = Visibility.Collapsed;
         }
     }
 }

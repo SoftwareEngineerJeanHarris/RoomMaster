@@ -2,7 +2,6 @@
 
 namespace RoomMaster.Login
 {
-
     public class User
     {
         public string Name { get; set; }
