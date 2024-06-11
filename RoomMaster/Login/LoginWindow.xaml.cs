@@ -33,16 +33,18 @@ namespace RoomMaster.Login
         {
             LoginUC.Visibility = Visibility.Collapsed;
             CreateAccountUC.Visibility = Visibility.Visible;
-            SwitchToCreateAccountButton.Visibility = Visibility.Collapsed;
-            SwitchToLoginButton.Visibility = Visibility.Visible;
+
+            CreateAccountSwitchToLogin.Visibility = Visibility.Visible;
+            LoginSwitchToCreateAccount.Visibility = Visibility.Hidden;
         }
 
         private void SwitchToLoginView()
         {
             LoginUC.Visibility = Visibility.Visible;
             CreateAccountUC.Visibility = Visibility.Collapsed;
-            SwitchToCreateAccountButton.Visibility = Visibility.Visible;
-            SwitchToLoginButton.Visibility = Visibility.Collapsed;
+
+            CreateAccountSwitchToLogin.Visibility = Visibility.Hidden;
+            LoginSwitchToCreateAccount.Visibility = Visibility.Visible;
         }
     }
 }

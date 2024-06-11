@@ -5,21 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RoomMaster.Login"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
-    <Grid>
-        <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center" Visibility="Hidden"/>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Full Name:"/>
-            <TextBox Name="FullNameTextBox" Width="200"/>
-            <TextBlock Text="Email:" Margin="0,10,0,0"/>
-            <TextBox Name="EmailTextBox" Width="200"/>
-            <TextBlock Text="Username:" Margin="0,10,0,0"/>
-            <TextBox Name="NewUsernameTextBox" Width="200"/>
-            <TextBlock Text="Password:" Margin="0,10,0,0"/>
-            <PasswordBox Name="NewPasswordBox" Width="200"/>
-            <TextBlock Text="Confirm Password:" Margin="0,10,0,0"/>
-            <PasswordBox Name="ConfirmPasswordBox" Width="200"/>
-            <Button Content="Create Account" Width="200" Margin="0,10,0,0" Click="CreateAccountButton_Click"/>
+             d:DesignHeight="450" d:DesignWidth="350">
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+            <TextBlock Text="Full Name" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <TextBox Name="FullNameTextBox" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1"/>
+            </StackPanel>
+            <TextBlock Text="Email" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <TextBox Name="EmailTextBox" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1"/>
+            </StackPanel>
+            <TextBlock Text="Username" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <TextBox Name="NewUsernameTextBox" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1"/>
+            </StackPanel>
+            <TextBlock Text="Password" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <PasswordBox Name="NewPasswordBox" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1"/>
+            </StackPanel>
+            <TextBlock Text="Confirm Password" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <PasswordBox Name="ConfirmPasswordBox" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1"/>
+            </StackPanel>
+            <Button Content="Create Account" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="CreateAccountButton_Click" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" HorizontalContentAlignment="Center" Visibility="Hidden" Padding="5"/>
         </StackPanel>
     </Grid>
 </UserControl>

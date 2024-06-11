@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoomMaster.Login"
         mc:Ignorable="d"
-        Title="Login" Height="400" Width="800">
+        Title="Login" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -18,15 +18,16 @@
                     <local:LoginUC x:Name="LoginUC" LoginSuccessful="LoginUC_LoginSuccessful"/>
                     <local:CreateAccountUC x:Name="CreateAccountUC" Visibility="Collapsed" AccountCreated="CreateAccountUC_AccountCreated"/>
                 </Grid>
-
-                <Button Content="Switch to Login" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SwitchToLoginButton_Click" Margin="10" Visibility="Collapsed" x:Name="SwitchToLoginButton"/>
             </Grid>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,346,0,0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,535,0,10" x:Name="LoginSwitchToCreateAccount">
             <TextBlock Text="New Account?" FontSize="12" Foreground="Gray" Height="22"/>
-            <TextBlock Text=" Sign up!" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Margin="5,0,0,0" Height="22"/>
+            <TextBlock Text=" Sign up!" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Margin="5,0,0,0" Height="22" MouseDown="SwitchToCreateAccountButton_Click"/>
         </StackPanel>
-        <Button Content="Switch to Create Account" VerticalAlignment="Top" HorizontalAlignment="Center" Click="SwitchToCreateAccountButton_Click" Margin="0,318,0,0" Padding="5" x:Name="SwitchToCreateAccountButton"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,535,0,0" Visibility="Collapsed" x:Name="CreateAccountSwitchToLogin">
+            <TextBlock Text="Back to " FontSize="12" Foreground="Gray" Height="22"/>
+            <TextBlock Text=" Login" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Margin="0,0,0,0" Height="22" MouseDown="SwitchToLoginButton_Click"/>
+        </StackPanel>
         <Grid Grid.Column="1">
             <Image Source="pack://application:,,,/Misc/Resources/LoginScreen.jpg" Stretch="UniformToFill" />
         </Grid>

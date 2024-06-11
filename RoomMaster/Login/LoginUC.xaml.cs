@@ -1,10 +1,10 @@
-﻿using RoomMaster.Misc;
-using RoomMaster.Misc.Controls;
+﻿using RoomMaster.Misc.Controls;
+using RoomMaster.Misc;
 using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace RoomMaster.Login
 {
@@ -37,6 +37,14 @@ namespace RoomMaster.Login
             else
             {
                 Helper.ShowBanner(banner, "Invalid username or password.", NotificationType.Error);
+            }
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoginButton_Click(LoginButton, null);
             }
         }
     }
