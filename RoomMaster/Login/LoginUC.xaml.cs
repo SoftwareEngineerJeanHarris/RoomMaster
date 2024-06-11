@@ -31,6 +31,7 @@ namespace RoomMaster.Login
             bool isValid = DatabaseHelper.ValidateUser(username, password);
             if (isValid)
             {
+                Helper.ShowBanner(banner, "Logging in.", NotificationType.Success);
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
             }
             else

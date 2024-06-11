@@ -6,14 +6,23 @@
              xmlns:local="clr-namespace:RoomMaster.Login"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
-    <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Username:"/>
-            <TextBox Name="UsernameTextBox" Width="200"/>
-            <TextBlock Text="Password:" Margin="0,10,0,0"/>
-            <PasswordBox Name="PasswordBox" Width="200"/>
-            <Button Content="Login" Width="200" Margin="0,10,0,0" Click="LoginButton_Click"/>
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <TextBlock Text="Hello, Welcome back" FontWeight="Bold" FontSize="24" Foreground="Black" TextAlignment="Center" Margin="0,0,0,20"/>
+            <TextBlock Text="Email" FontSize="14" Foreground="Gray"/>
+            <StackPanel Margin="0,0,0,20">
+                <TextBox Name="UsernameTextBox" Width="300" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1" Width="300"/>
+            </StackPanel>
+            <TextBlock Text="Password" FontSize="14" Foreground="Gray"/>
+            <StackPanel>
+                <PasswordBox Name="PasswordBox" Width="300" Height="30" BorderThickness="0" Padding="5"/>
+                <Border Background="LightGray" Height="1" Width="300"/>
+            </StackPanel>
+            <TextBlock Text="Forgot Password?" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Height="22" Margin="0,5,0,20" Width="102"/>
+            <Button Content="LOGIN" Width="300" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="LoginButton_Click" FontSize="16" FontWeight="Bold" />
+            
         </StackPanel>
-        <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+        <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center" Visibility="Hidden" Padding="5"/>
     </Grid>
 </UserControl>
