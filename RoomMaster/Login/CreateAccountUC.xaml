@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RoomMaster.Login"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="350">
+             d:DesignHeight="500" d:DesignWidth="350">
     <Grid Background="White">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+            <TextBlock Text="Get Started" FontWeight="Bold" FontSize="24" Foreground="Black" TextAlignment="Left" Margin="0,0,0,20"/>
             <TextBlock Text="Full Name" FontSize="14" Foreground="Gray"/>
             <StackPanel Margin="0,0,0,20">
                 <TextBox Name="FullNameTextBox" Height="30" BorderThickness="0" Padding="5"/>

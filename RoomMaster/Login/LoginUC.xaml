@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RoomMaster.Login"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="350">
+             d:DesignHeight="500" d:DesignWidth="350">
     <Grid Background="White">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
             <TextBlock Text="Hello," FontWeight="Bold" FontSize="24" Foreground="Black" TextAlignment="Left"/>
@@ -21,7 +21,7 @@
                 <Border Background="LightGray" Height="1"/>
             </StackPanel>
             <TextBlock Text="Forgot Password?" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Height="22" Margin="0,5,0,20"/>
-            <Button Content="LOGIN" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="LoginButton_Click" FontSize="16" FontWeight="Bold" />
+            <Button x:Name="LoginButton" Content="LOGIN" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="LoginButton_Click" FontSize="16" FontWeight="Bold" />
             <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" Width="350" VerticalAlignment="Top" HorizontalContentAlignment="Center" Visibility="Hidden" Padding="5"/>
         </StackPanel>
         

@@ -27,7 +27,7 @@ namespace RoomMaster.Misc
             }
         }
 
-        public static bool ValidateUser(string username, string password)
+        public static bool ValidateUserForLogin(string username, string password)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -47,6 +47,7 @@ namespace RoomMaster.Misc
                             return storedPasswordHash == hashedPassword;
                         }
                     }
+                    DatabaseHelper.LogActivity(username, "Account Login.", username + " logged into their account.");
                 }
                 catch (Exception ex)
                 {
@@ -117,6 +118,7 @@ namespace RoomMaster.Misc
                     cmd.Parameters.AddWithValue("@permission", permission);
                     cmd.Parameters.AddWithValue("@salt", Convert.ToBase64String(salt));
                     int result = cmd.ExecuteNonQuery();
+                    DatabaseHelper.LogActivity(username, "Account Created.", username + " created their first accont.");
                     return result > 0;
                 }
                 catch (Exception ex)
@@ -157,6 +159,28 @@ namespace RoomMaster.Misc
                 Array.Copy(salt, 0, hashBytes, 0, 16);
                 Array.Copy(hash, 0, hashBytes, 16, 20);
                 return Convert.ToBase64String(hashBytes);
+            }
+        }
+
+        private static void LogActivity(string username, string activityType, string description)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO ActivityLog (Username, Timestamp, ActivityType, Description) VALUES (@username, @timestamp, @activityType, @description)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@activityType", activityType);
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error logging activity: " + ex.Message);
+                }
             }
         }
     }

@@ -24,47 +24,61 @@ namespace RoomMaster.Login
             string password = NewPasswordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
 
+            if(ValidFields(fullName, email, username, password, confirmPassword))
+            {
+                AtemptCreatingUser(username, password, fullName, email);
+            }
+        }
+
+        private bool ValidFields(string fullName, string email, string username, string password, string confirmPassword)
+        {
             if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
                 string.IsNullOrWhiteSpace(confirmPassword))
             {
                 Helper.ShowBanner(banner, "All fields are required.", NotificationType.Error);
-                return;
+                return false;
             }
 
             if (!IsValidEmail(email))
             {
                 Helper.ShowBanner(banner, "Invalid email format.", NotificationType.Error);
-                return;
+                return false;
             }
 
             if (password != confirmPassword)
             {
                 Helper.ShowBanner(banner, "Passwords do not match.", NotificationType.Error);
-                return;
+                return false;
             }
 
             if (!IsStrongPassword(password))
             {
                 Helper.ShowBanner(banner, "Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters.", NotificationType.Error);
-                return;
+                return false;
             }
 
             if (DatabaseHelper.UserExists(username))
             {
                 Helper.ShowBanner(banner, "A user with this username already exists.", NotificationType.Error);
-                return;
+                return false;
             }
 
+            return true;
+        }
+
+        private void AtemptCreatingUser(string username, string password, string fullName, string email)
+        {
             bool isCreated = DatabaseHelper.CreateUser(username, password, fullName, email, 1);
             if (isCreated)
             {
                 Helper.ShowBanner(banner, "Account created successfully.", NotificationType.Success);
+                ClearFields();
                 AccountCreated?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                Helper.ShowBanner(banner, "Error creating account. Please try again.", NotificationType.Notification);
+                Helper.ShowBanner(banner, "Connection error creating account. Please try again.", NotificationType.Notification);
             }
         }
 
@@ -89,6 +103,15 @@ namespace RoomMaster.Login
             }
 
             return hasUpperChar && hasLowerChar && hasDigit && hasSpecialChar;
+        }
+
+        private void ClearFields()
+        {
+            FullNameTextBox.Clear();
+            EmailTextBox.Clear();
+            NewUsernameTextBox.Clear();
+            NewPasswordBox.Clear();
+            ConfirmPasswordBox.Clear();
         }
     }
 }
