@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using RoomMaster.Options;
 
 namespace RoomMaster.Login
 {
@@ -32,6 +33,7 @@ namespace RoomMaster.Login
             if (isValid)
             {
                 Helper.ShowBanner(banner, "Logging in.", NotificationType.Success);
+                AppSettings.UserName = username;
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
             }
             else

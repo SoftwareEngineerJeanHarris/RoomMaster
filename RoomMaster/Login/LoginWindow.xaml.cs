@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using RoomMaster.Misc.Controls;
+using RoomMaster.Options;
+using System.Reflection;
+using System.Windows;
 
 namespace RoomMaster.Login
 {
@@ -11,12 +14,14 @@ namespace RoomMaster.Login
 
         private void LoginUC_LoginSuccessful(object sender, EventArgs e)
         {
-            // Handle post-login actions here (e.g., navigating to the main application window)
+            Helper.ShowBanner(LoginUC.banner, "Logging in.", NotificationType.Success);
+            //Todo: Open and work on mainwindow from here.
         }
 
         private void CreateAccountUC_AccountCreated(object sender, EventArgs e)
         {
             SwitchToLoginView();
+            Helper.ShowBanner(LoginUC.banner, "Account Created.", NotificationType.Success);
         }
 
         private void SwitchToCreateAccountButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +38,6 @@ namespace RoomMaster.Login
         {
             LoginUC.Visibility = Visibility.Collapsed;
             CreateAccountUC.Visibility = Visibility.Visible;
-
             CreateAccountSwitchToLogin.Visibility = Visibility.Visible;
             LoginSwitchToCreateAccount.Visibility = Visibility.Hidden;
         }
@@ -42,7 +46,6 @@ namespace RoomMaster.Login
         {
             LoginUC.Visibility = Visibility.Visible;
             CreateAccountUC.Visibility = Visibility.Collapsed;
-
             CreateAccountSwitchToLogin.Visibility = Visibility.Hidden;
             LoginSwitchToCreateAccount.Visibility = Visibility.Visible;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoomMaster.Misc
+namespace RoomMaster.Misc.Controls
 {
     public enum NotificationType
     {
