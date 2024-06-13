@@ -1,4 +1,5 @@
 ﻿using RoomMaster.Login;
+using RoomMaster.Options;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +18,10 @@ namespace RoomMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(User user)
+        public MainWindow()
         {
             InitializeComponent();
+            this.Title = "Welcome, " + AppSettings.Name;
         }
     }
 }

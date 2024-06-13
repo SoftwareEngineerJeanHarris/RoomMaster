@@ -15,7 +15,9 @@ namespace RoomMaster.Login
         private void LoginUC_LoginSuccessful(object sender, EventArgs e)
         {
             Helper.ShowBanner(LoginUC.banner, "Logging in.", NotificationType.Success);
-            //Todo: Open and work on mainwindow from here.
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
         private void CreateAccountUC_AccountCreated(object sender, EventArgs e)

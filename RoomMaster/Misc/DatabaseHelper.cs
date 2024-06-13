@@ -4,6 +4,7 @@ using RoomMaster.Login;
 using System;
 using System.IO;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace RoomMaster.Misc
 {
@@ -97,6 +98,34 @@ namespace RoomMaster.Misc
                 rng.GetBytes(salt);
             }
             return salt;
+        }
+
+        public static (string, int) GetProfile(string username)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT name, permission FROM users WHERE username=@username";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = reader["name"].ToString();
+                            int permission = Convert.ToInt32(reader["permission"]);
+                            return (name, permission);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return (null, 0); // or throw an exception or return a default value
         }
 
         public static bool CreateUser(string username, string password, string name, string email, int permission)

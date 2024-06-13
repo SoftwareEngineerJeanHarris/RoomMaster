@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoomMaster.Options
 {
-    internal class AppSettings
+    public class AppSettings
     {
         public static string UserName { get; set; }
+        public static string Name { get; set; }
+        public static int Permission { get; set; }
     }
 }

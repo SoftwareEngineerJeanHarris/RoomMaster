@@ -34,6 +34,9 @@ namespace RoomMaster.Login
             {
                 Helper.ShowBanner(banner, "Logging in.", NotificationType.Success);
                 AppSettings.UserName = username;
+
+                (AppSettings.Name, AppSettings.Permission) = DatabaseHelper.GetProfile(username);
+
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
             }
             else
@@ -46,6 +49,7 @@ namespace RoomMaster.Login
         {
             if (e.Key == Key.Enter)
             {
+                Helper.ShowBanner(banner, "Please wait while we fetch your profile.", NotificationType.Notification);
                 LoginButton_Click(LoginButton, null);
             }
         }
