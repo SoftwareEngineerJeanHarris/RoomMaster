@@ -20,8 +20,8 @@
                 <PasswordBox x:Name="PasswordBox" Height="30" BorderThickness="0" Padding="5" KeyDown="TextBox_KeyDown"/>
                 <Border Background="LightGray" Height="1"/>
             </StackPanel>
-            <TextBlock Text="Forgot Password?" FontSize="12" Foreground="LightGreen" FontWeight="Bold" Cursor="Hand" Height="22" Margin="0,5,0,20"/>
-            <Button x:Name="LoginButton" Content="LOGIN" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="LoginButton_Click" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Forgot Password?" FontSize="12" Foreground="#66BB6A" FontWeight="Bold" Cursor="Hand" Height="22" Margin="0,5,0,20"/>
+            <Button x:Name="LoginButton" Content="LOGIN" Height="40" Background="#66BB6A" Foreground="White" BorderBrush="#66BB6A" Click="LoginButton_Click" FontSize="16" FontWeight="Bold" />
             <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" Width="350" VerticalAlignment="Top" HorizontalContentAlignment="Center" Visibility="Hidden" Padding="5"/>
         </StackPanel>
         

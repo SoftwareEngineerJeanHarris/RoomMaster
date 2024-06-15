@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RoomMaster.Guests
 {
-    internal class Guest
+    public class Guest
     {
+        public string Name { get; set; }
     }
 }

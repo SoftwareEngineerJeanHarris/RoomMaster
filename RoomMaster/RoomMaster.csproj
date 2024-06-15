@@ -15,7 +15,7 @@
   <ItemGroup>
     <Folder Include="Calendar\" />
     <Folder Include="Dashboard\" />
-    <Folder Include="Rooms\" />
+    <Folder Include="Messages\" />
     <Folder Include="Reservations\" />
   </ItemGroup>
 

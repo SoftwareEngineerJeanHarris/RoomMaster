@@ -34,7 +34,7 @@
                 <PasswordBox Name="ConfirmPasswordBox" Height="30" BorderThickness="0" Padding="5"/>
                 <Border Background="LightGray" Height="1"/>
             </StackPanel>
-            <Button Content="Create Account" Height="40" Background="LightGreen" Foreground="White" BorderBrush="LightGreen" Click="CreateAccountButton_Click" FontSize="16" FontWeight="Bold"/>
+            <Button Content="Create Account" Height="40" Background="#66BB6A" Foreground="White" BorderBrush="#66BB6A" Click="CreateAccountButton_Click" FontSize="16" FontWeight="Bold"/>
             <Label x:Name="banner" Background="DarkRed" Foreground="White" Content="Banner" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" HorizontalContentAlignment="Center" Visibility="Hidden" Padding="5"/>
         </StackPanel>
     </Grid>

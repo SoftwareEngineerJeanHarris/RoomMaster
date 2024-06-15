@@ -5,8 +5,138 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoomMaster"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="800" Width="1200">
+    <Window.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="#66BB6A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#66BB6A"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="180"/>
+        </Style>
 
+        <Style x:Key="RoomStatusStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="#F7F8FA" Width="200" Orientation="Vertical">
+            <TextBlock Text="LOGO AREA" FontSize="24" FontWeight="Bold" Margin="10"/>
+            <Button Content="Dashboard" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Calender" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Rooms" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Reservations" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Guests" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Mesages" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Options" Style="{StaticResource MenuButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Total Reservations -->
+                <Border Background="#66BB6A" CornerRadius="5" Margin="5" Padding="10" Grid.Column="0">
+                    <StackPanel>
+                        <TextBlock Text="Total Reservations" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="1456" Foreground="White" FontSize="24"/>
+                        <TextBlock Text="+11% From previous week" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Rooms Free Today -->
+                <Border Background="#66BB6A" CornerRadius="5" Margin="5" Padding="10" Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock Text="Rooms Free Today" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="3567" Foreground="White" FontSize="24"/>
+                        <TextBlock Text="+22% From yesterday" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Rooms Free This Week -->
+                <Border Background="#66BB6A" CornerRadius="5" Margin="5" Padding="10" Grid.Column="2">
+                    <StackPanel>
+                        <TextBlock Text="Rooms Free This Week" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="14.5" Foreground="White" FontSize="24"/>
+                        <TextBlock Text="-0.2% From last week" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Projected Revenue -->
+                <Border Background="#66BB6A" CornerRadius="5" Margin="5" Padding="10" Grid.Column="3">
+                    <StackPanel>
+                        <TextBlock Text="Projected Revenue" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="15234" Foreground="White" FontSize="24"/>
+                        <TextBlock Text="+10% From last week" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Buttons for Hotel Management Functions -->
+            <Grid Grid.Column="1" Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <TextBlock Text="Room Availability Status" FontSize="24" FontWeight="Bold" Margin="10" Grid.Row="0"/>
+
+                <!-- Buttons for Hotel Management Functions -->
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Check-in Guests -->
+                    <Button Content="Check-in Guests" Style="{StaticResource MenuButtonStyle}" Grid.Column="0"/>
+                    <!-- Check-out Guests -->
+                    <Button Content="Check-out Guests" Style="{StaticResource MenuButtonStyle}" Grid.Column="1"/>
+                    <!-- View Room Availability -->
+                    <Button Content="View Room Availability" Style="{StaticResource MenuButtonStyle}" Grid.Column="2"/>
+                    <!-- Make Reservation -->
+                    <Button Content="Make Reservation" Style="{StaticResource MenuButtonStyle}" Grid.Column="3"/>
+                    <!-- Modify Reservation -->
+                    <Button Content="Modify Reservation" Style="{StaticResource MenuButtonStyle}" Grid.Column="4"/>
+                </Grid>
+
+                <!-- Room List -->
+                <DataGrid Grid.Row="2" Margin="10" AutoGenerateColumns="False" ItemsSource="{Binding Rooms}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Room Number" Binding="{Binding RoomNumber}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
