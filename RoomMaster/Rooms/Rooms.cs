@@ -7,7 +7,7 @@ using RoomMaster.Guests;
 
 namespace RoomMaster.Rooms
 {
-    class Rooms
+    class Room
     {
         public string RoomNumber { get; set; }
         public string Status { get; set; }
